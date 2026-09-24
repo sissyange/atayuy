@@ -13,7 +13,7 @@
 
     <title>ChurchNotes - Home</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    
 
 
     <style>
@@ -652,6 +652,47 @@
 
     </style>
 
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;min-height:100%;font-family:Arial,Helvetica,sans-serif}
+body{background:#e9edf2;color:#172033}
+.mobile-app{width:100%;max-width:430px;min-height:100vh;margin:0 auto;background:#f8fafc;position:relative;padding-bottom:90px;box-shadow:0 0 30px rgba(15,23,42,.08)}
+.home-header{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;padding:28px 20px 24px;display:flex;align-items:center;justify-content:space-between;border-radius:0 0 24px 24px;box-shadow:0 8px 20px rgba(37,99,235,.18)}
+.welcome-small{font-size:13px;opacity:.9;margin-bottom:5px}
+.home-header h1{font-size:27px;line-height:1.15;font-weight:800}
+.home-content{padding:18px 16px 30px}
+.search-box{height:48px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;display:flex;align-items:center;gap:10px;padding:0 14px;box-shadow:0 5px 16px rgba(15,23,42,.06);margin-bottom:16px}
+.search-box span{font-size:18px}
+.search-box input{width:100%;border:0;outline:0;background:transparent;font-size:14px;color:#172033}
+.search-box input::placeholder{color:#94a3b8}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.stat-card{background:#fff;border:1px solid #e5e7eb;border-radius:15px;padding:15px 8px;text-align:center;box-shadow:0 5px 16px rgba(15,23,42,.06)}
+.stat-card strong{display:block;color:#2563eb;font-size:22px;margin-bottom:4px}
+.stat-card span{display:block;color:#64748b;font-size:12px;font-weight:600}
+.section{margin-bottom:25px}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.section-header h2{font-size:19px;color:#172033}
+.section-header a{font-size:12px;font-weight:700;color:#2563eb;text-decoration:none}
+.note-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:10px;box-shadow:0 5px 18px rgba(15,23,42,.06)}
+.note-icon{width:46px;height:46px;min-width:46px;border-radius:13px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:21px}
+.note-info{min-width:0;flex:1}
+.note-info h3{font-size:15px;color:#172033;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.note-info p{font-size:12px;color:#64748b;margin-bottom:3px}
+.note-info small{font-size:11px;color:#94a3b8;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.arrow{font-size:25px;color:#94a3b8}
+.service-icon{width:50px;height:50px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:11px;background:#eff6ff}
+.service-icon.sunday{background:#eff6ff}
+.service-icon.prayer{background:#fef3c7}
+.service-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:15px;box-shadow:0 5px 18px rgba(15,23,42,.07)}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:70px;background:#fff;border-top:1px solid #e5e7eb;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;z-index:1000;box-shadow:0 -5px 18px rgba(15,23,42,.08)}
+.nav-item{text-decoration:none;color:#94a3b8;text-align:center;font-size:11px;font-weight:600}
+.nav-item span{display:block;font-size:22px;line-height:25px;margin-bottom:2px}
+.nav-item small{font-size:11px}
+.nav-item.active,.nav-item:hover{color:#2563eb}
+@media(max-width:430px){.mobile-app{box-shadow:none}.home-content{padding-left:14px;padding-right:14px}}
+</style>
+
 </head>
 
 
@@ -1147,7 +1188,7 @@
      APP JAVASCRIPT
 ========================================== -->
 
-<script src="js/app.js"></script>
+
 
 <script>
 /*
