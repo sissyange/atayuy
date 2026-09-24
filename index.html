@@ -1,252 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ChurchNotes</title>
 
-    <meta name="viewport"
-          content="width=device-width,
-                   initial-scale=1.0,
-                   maximum-scale=1.0,
-                   user-scalable=no">
+<style>
+    /* ==============================
+       CHURCHNOTES SPLASH - STANDALONE
+       NO CSS FILE REQUIRED
+    ============================== */
 
-    <title>ChurchNotes</title>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-    <!--
-        STANDALONE INDEX PAGE
-        No external css/style.css is required.
-        This makes the splash screen work directly on GitHub Pages.
-    -->
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+        overflow: hidden;
+    }
+
+    .splash-page {
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .splash-container {
+        width: 100%;
+        max-width: 430px;
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        padding: 40px 25px;
+
+        /* White mobile-app card */
+        background: #f7f9fc;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Soft decorative circles */
+    .splash-container::before {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background: rgba(96, 165, 250, 0.10);
+        top: -90px;
+        right: -100px;
+    }
+
+    .splash-container::after {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: rgba(37, 99, 235, 0.07);
+        bottom: -80px;
+        left: -80px;
+    }
+
+    .splash-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* LOGO */
+    .splash-logo {
+        width: 108px;
+        height: 108px;
+        border-radius: 30px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: linear-gradient(135deg, #2563eb, #3b82f6, #60a5fa);
+
+        box-shadow:
+            0 18px 35px rgba(37, 99, 235, 0.28);
+
+        margin-bottom: 25px;
+
+        animation: logoFloat 2.5s ease-in-out infinite;
+    }
+
+    .book {
+        width: 64px;
+        height: 52px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .book-left,
+    .book-right {
+        position: absolute;
+        top: 4px;
+        width: 30px;
+        height: 44px;
+        background: white;
+        border: 3px solid white;
+    }
+
+    .book-left {
+        left: 2px;
+        border-radius: 6px 2px 2px 6px;
+        transform: skewY(-5deg);
+    }
+
+    .book-right {
+        right: 2px;
+        border-radius: 2px 6px 6px 2px;
+        transform: skewY(5deg);
+    }
+
+    .cross {
+        position: absolute;
+        z-index: 5;
+        width: 23px;
+        height: 23px;
+    }
+
+    .cross::before,
+    .cross::after {
+        content: "";
+        position: absolute;
+        background: #2563eb;
+        border-radius: 2px;
+    }
+
+    .cross::before {
+        width: 7px;
+        height: 23px;
+        left: 8px;
+        top: 0;
+    }
+
+    .cross::after {
+        width: 23px;
+        height: 7px;
+        left: 0;
+        top: 8px;
+    }
+
+    /* TITLE */
+    .splash-container h1 {
+        color: #172033;
+        font-size: 34px;
+        line-height: 1.15;
+        font-weight: 800;
+        letter-spacing: -0.8px;
+        margin-bottom: 10px;
+    }
+
+    .splash-subtitle {
+        color: #64748b;
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 290px;
+        margin-bottom: 48px;
+    }
+
+    /* LOADING */
+    .loading-area {
+        width: 100%;
+        max-width: 285px;
+    }
+
+    .loading-bar {
+        width: 100%;
+        height: 8px;
+        background: #dbe5f1;
+        border-radius: 999px;
+        overflow: hidden;
+        box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.08);
+    }
+
+    .loading-progress {
+        height: 100%;
+        width: 0;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
+        animation: load 3s linear forwards;
+    }
+
+    .loading-text {
+        margin-top: 13px;
+        color: #94a3b8;
+        font-size: 12px;
+        font-weight: 600;
+        animation: pulse 1.2s ease-in-out infinite;
+    }
+
+    .loading-dots::after {
+        content: "";
+        animation: dots 1.2s steps(4, end) infinite;
+    }
+
+    /* FOOTER */
+    .splash-footer {
+        margin-top: 38px;
+        color: #b0bac8;
+        font-size: 11px;
+    }
+
+    @keyframes load {
+        0% { width: 0%; }
+        30% { width: 30%; }
+        60% { width: 62%; }
+        85% { width: 84%; }
+        100% { width: 100%; }
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: .55; }
+        50% { opacity: 1; }
+    }
+
+    @keyframes dots {
+        0% { content: ""; }
+        25% { content: "."; }
+        50% { content: ".."; }
+        75%, 100% { content: "..."; }
+    }
+
+    @keyframes logoFloat {
+        0%, 100% {
+            transform: translateY(0);
         }
-
-        html,
-        body {
-            width: 100%;
-            min-height: 100%;
+        50% {
+            transform: translateY(-5px);
         }
+    }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #eef3f9;
-            color: #1d2939;
-        }
-
+    @media (min-width: 431px) {
         .splash-page {
-            min-height: 100vh;
-            min-height: 100dvh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            overflow: hidden;
+            padding: 20px;
         }
 
         .splash-container {
-            width: 100%;
-            max-width: 430px;
-            min-height: 100vh;
-            min-height: 100dvh;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            padding: 40px 24px;
-            background: #f7f9fc;
+            min-height: calc(100vh - 40px);
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, .20);
         }
+    }
 
-        .splash-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 22px;
+    @media (max-width: 430px) {
+        .splash-container {
+            max-width: 100%;
         }
-
-        .book-icon {
-            width: 92px;
-            height: 92px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 25px;
-
-            background: linear-gradient(
-                135deg,
-                #2563eb,
-                #3b82f6,
-                #60a5fa
-            );
-
-            color: #ffffff;
-
-            box-shadow:
-                0 14px 30px rgba(37, 99, 235, 0.25);
-
-            position: relative;
-        }
-
-        .book-icon::before,
-        .book-icon::after {
-            content: "";
-            position: absolute;
-            top: 21px;
-            bottom: 21px;
-            width: 25px;
-
-            border: 3px solid rgba(255, 255, 255, 0.95);
-        }
-
-        .book-icon::before {
-            left: 20px;
-            border-right: none;
-            border-radius: 8px 0 0 8px;
-        }
-
-        .book-icon::after {
-            right: 20px;
-            border-left: none;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .book-icon span {
-            position: relative;
-            z-index: 2;
-
-            font-size: 25px;
-            font-weight: 800;
-            line-height: 1;
-        }
-
-        .splash-container h1 {
-            color: #172033;
-            font-size: 31px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 9px;
-        }
-
-        .splash-subtitle {
-            color: #64748b;
-            font-size: 14px;
-            line-height: 1.5;
-            max-width: 290px;
-            margin-bottom: 42px;
-        }
-
-        .loading-area {
-            width: 100%;
-            max-width: 280px;
-        }
-
-        .loading-bar {
-            width: 100%;
-            height: 8px;
-            overflow: hidden;
-            border-radius: 999px;
-            background: #dbe5f1;
-            position: relative;
-        }
-
-        .loading-progress {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 35%;
-            border-radius: 999px;
-
-            background: linear-gradient(
-                90deg,
-                #2563eb,
-                #3b82f6,
-                #60a5fa
-            );
-
-            animation: loadingProgress 3s ease-in-out forwards;
-        }
-
-        .loading-text {
-            margin-top: 12px;
-
-            color: #94a3b8;
-            font-size: 12px;
-            font-weight: 600;
-
-            animation: loadingTextPulse 1.2s ease-in-out infinite;
-        }
-
-        @keyframes loadingTextPulse {
-            0%, 100% {
-                opacity: 0.55;
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes loadingProgress {
-            0% {
-                width: 0%;
-                opacity: 0.85;
-            }
-
-            15% {
-                width: 18%;
-            }
-
-            45% {
-                width: 52%;
-            }
-
-            75% {
-                width: 78%;
-            }
-
-            100% {
-                width: 100%;
-                opacity: 1;
-            }
-        }
-
-        @media (min-width: 431px) {
-            .splash-container {
-                min-height: 100vh;
-                border-radius: 24px;
-                box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
-            }
-
-            .splash-page {
-                padding: 20px;
-            }
-        }
-
-        @media (max-width: 430px) {
-            .splash-container {
-                max-width: 100%;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 
 <body class="splash-page">
 
-    <div class="splash-container">
+<div class="splash-container">
+
+    <div class="splash-content">
 
         <!-- LOGO -->
         <div class="splash-logo">
-            <div class="book-icon">
-                <span>✚</span>
+            <div class="book">
+                <div class="book-left"></div>
+                <div class="book-right"></div>
+                <div class="cross"></div>
             </div>
         </div>
 
@@ -265,22 +311,25 @@
             </div>
 
             <p class="loading-text">
-                Loading...
+                Loading<span class="loading-dots"></span>
             </p>
 
         </div>
 
+        <p class="splash-footer">
+            Growing in faith, one note at a time.
+        </p>
+
     </div>
 
-    <script>
-        // Loading screen duration
-        setTimeout(function () {
+</div>
 
-            // Go to Home
-            window.location.href = "home.html";
-
-        }, 3000);
-    </script>
+<script>
+    // Wait 3 seconds, then open Home.
+    setTimeout(function () {
+        window.location.href = "home.html";
+    }, 3000);
+</script>
 
 </body>
 </html>
