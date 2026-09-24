@@ -13,10 +13,402 @@
 
     <title>ChurchNotes - Home</title>
 
-    
+    <link rel="stylesheet" href="css/style.css">
 
 
     <style>
+
+/* =========================================================
+   CHURCHNOTES HOME - STANDALONE BASE DESIGN
+   This Home page does not depend on css/style.css.
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#eef3f9;
+    color:#1d2939;
+    min-height:100vh;
+    margin:0;
+    transition:background .3s ease,color .3s ease;
+}
+
+button,input,textarea,select{font-family:inherit;}
+a{text-decoration:none;color:inherit;}
+
+.mobile-app{
+    width:100%;
+    max-width:430px;
+    min-height:100vh;
+    margin:0 auto;
+    background:#f7f9fc;
+    position:relative;
+    overflow-x:hidden;
+    box-shadow:0 0 30px rgba(0,0,0,.08);
+}
+
+.home-header{
+    width:100%;
+    min-height:112px;
+    background:linear-gradient(135deg,#2563eb,#3b82f6,#60a5fa);
+    color:#fff;
+    border-radius:0 0 28px 28px;
+    padding:24px 18px 25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.welcome-small{
+    margin:0 0 5px;
+    font-size:13px;
+    color:rgba(255,255,255,.88);
+}
+
+.home-header h1{
+    margin:0;
+    font-size:25px;
+    font-weight:800;
+    color:#fff;
+    line-height:1.15;
+}
+
+.home-content{
+    padding:20px 18px 105px;
+}
+
+.search-box{
+    width:100%;
+    min-height:48px;
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    padding:0 14px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    box-shadow:0 5px 16px rgba(15,23,42,.06);
+    margin-bottom:17px;
+}
+
+.search-box span{
+    font-size:18px;
+    flex-shrink:0;
+}
+
+.search-box input{
+    width:100%;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:#172033;
+    font-size:14px;
+}
+
+.search-box input::placeholder{color:#98a2b3;}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+    margin-bottom:24px;
+}
+
+.stat-card{
+    min-width:0;
+    background:#fff;
+    border:1px solid #edf1f6;
+    border-radius:16px;
+    padding:15px 8px;
+    text-align:center;
+    box-shadow:0 5px 16px rgba(15,23,42,.05);
+}
+
+.stat-card strong{
+    display:block;
+    font-size:22px;
+    line-height:1.15;
+    color:#2563eb;
+    font-weight:800;
+    margin-bottom:5px;
+}
+
+.stat-card span{
+    display:block;
+    color:#7b8794;
+    font-size:11px;
+    font-weight:600;
+}
+
+.section{
+    margin-bottom:24px;
+}
+
+.section-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:11px;
+}
+
+.section-header h2{
+    margin:0;
+    font-size:17px;
+    font-weight:750;
+    color:#172033;
+}
+
+.section-header a{
+    color:#2563eb;
+    font-size:12px;
+    font-weight:700;
+}
+
+.note-card{
+    width:100%;
+    min-height:82px;
+    background:#fff;
+    border:1px solid #edf1f6;
+    border-radius:16px;
+    padding:13px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    box-shadow:0 5px 16px rgba(15,23,42,.05);
+    margin-bottom:10px;
+}
+
+.note-icon{
+    width:46px;
+    height:46px;
+    min-width:46px;
+    border-radius:13px;
+    background:#eef4ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+}
+
+.note-info{
+    min-width:0;
+    flex:1;
+}
+
+.note-info h3{
+    margin:0 0 4px;
+    font-size:14px;
+    color:#172033;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.note-info p{
+    margin:0 0 3px;
+    font-size:12px;
+    color:#64748b;
+}
+
+.note-info small{
+    font-size:11px;
+    color:#98a2b3;
+}
+
+.arrow{
+    font-size:24px;
+    color:#98a2b3;
+    line-height:1;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+}
+
+.service-card{
+    min-width:0;
+    overflow:hidden;
+    background:#fff;
+    border:1px solid #edf1f6;
+    border-radius:17px;
+    padding:14px 12px;
+    box-shadow:0 5px 16px rgba(15,23,42,.05);
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+    transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.service-card:active{transform:scale(.97);}
+
+.service-icon{
+    width:43px;
+    height:43px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.service-icon.sunday{
+    background:#eef4ff;
+    color:#2563eb;
+}
+
+.service-icon.prayer{
+    background:#f0fdf4;
+    color:#16a34a;
+}
+
+.service-card h3{
+    margin:0 0 4px;
+    font-size:15px;
+    line-height:1.3;
+    color:#172033;
+}
+
+.service-card p{
+    margin:0;
+    font-size:13px;
+    color:#64748b;
+}
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:430px;
+    height:76px;
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-top:1px solid #e7ebf0;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    z-index:1000;
+    box-shadow:0 -5px 20px rgba(15,23,42,.07);
+}
+
+.nav-item{
+    flex:1;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    color:#98a2b3;
+    font-size:11px;
+    font-weight:600;
+    transition:color .2s ease,transform .2s ease;
+}
+
+.nav-item span{
+    font-size:21px;
+    line-height:1;
+    height:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.nav-item small{
+    font-size:11px;
+    font-weight:600;
+}
+
+.nav-item:hover,.nav-item.active{color:#2563eb;}
+.nav-item:active{transform:scale(.94);}
+.nav-item.active span{transform:translateY(-1px);}
+
+@media(max-width:430px){
+    .mobile-app{max-width:100%;}
+    .bottom-nav{max-width:100%;}
+}
+
+@media(min-width:431px){
+    body{padding:0;}
+    .mobile-app{min-height:100vh;}
+}
+
+/* Standalone Home dark mode */
+html.dark-mode,
+html.dark-mode body,
+body.dark-mode{
+    background:#0f172a !important;
+    color:#f8fafc !important;
+}
+
+html.dark-mode .mobile-app,
+body.dark-mode .mobile-app{
+    background:#0f172a !important;
+    color:#f8fafc !important;
+}
+
+body.dark-mode .search-box{
+    background:#182235 !important;
+    border-color:#263247 !important;
+    color:#f8fafc !important;
+}
+
+body.dark-mode .search-box input{
+    background:transparent !important;
+    color:#f8fafc !important;
+}
+
+body.dark-mode .search-box input::placeholder{color:#94a3b8 !important;}
+
+body.dark-mode .stat-card,
+body.dark-mode .note-card,
+body.dark-mode .service-card{
+    background:#182235 !important;
+    border-color:#263247 !important;
+    color:#f8fafc !important;
+    box-shadow:0 5px 18px rgba(0,0,0,.20) !important;
+}
+
+body.dark-mode .stat-card strong{color:#60a5fa !important;}
+body.dark-mode .stat-card span{color:#a8b3c1 !important;}
+body.dark-mode .note-info h3,
+body.dark-mode .service-card h3{color:#f8fafc !important;}
+body.dark-mode .note-info p,
+body.dark-mode .service-card p{color:#a8b3c1 !important;}
+body.dark-mode .note-info small{color:#94a3b8 !important;}
+body.dark-mode .note-icon,
+body.dark-mode .service-icon.sunday{background:#1e3a5f !important;}
+body.dark-mode .service-icon.prayer{background:#12352a !important;}
+body.dark-mode .section-header h2{color:#f8fafc !important;}
+body.dark-mode .section-header a{color:#60a5fa !important;}
+
+body.dark-mode .bottom-nav{
+    background:rgba(15,23,42,.98) !important;
+    border-top-color:#263247 !important;
+    box-shadow:0 -5px 20px rgba(0,0,0,.30) !important;
+}
+
+body.dark-mode .nav-item{color:#64748b !important;}
+body.dark-mode .nav-item.active,
+body.dark-mode .nav-item:hover{color:#60a5fa !important;}
+
 
         /* ==========================================
            HOME PROFILE AVATAR
@@ -652,47 +1044,6 @@
 
     </style>
 
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;min-height:100%;font-family:Arial,Helvetica,sans-serif}
-body{background:#e9edf2;color:#172033}
-.mobile-app{width:100%;max-width:430px;min-height:100vh;margin:0 auto;background:#f8fafc;position:relative;padding-bottom:90px;box-shadow:0 0 30px rgba(15,23,42,.08)}
-.home-header{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;padding:28px 20px 24px;display:flex;align-items:center;justify-content:space-between;border-radius:0 0 24px 24px;box-shadow:0 8px 20px rgba(37,99,235,.18)}
-.welcome-small{font-size:13px;opacity:.9;margin-bottom:5px}
-.home-header h1{font-size:27px;line-height:1.15;font-weight:800}
-.home-content{padding:18px 16px 30px}
-.search-box{height:48px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;display:flex;align-items:center;gap:10px;padding:0 14px;box-shadow:0 5px 16px rgba(15,23,42,.06);margin-bottom:16px}
-.search-box span{font-size:18px}
-.search-box input{width:100%;border:0;outline:0;background:transparent;font-size:14px;color:#172033}
-.search-box input::placeholder{color:#94a3b8}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
-.stat-card{background:#fff;border:1px solid #e5e7eb;border-radius:15px;padding:15px 8px;text-align:center;box-shadow:0 5px 16px rgba(15,23,42,.06)}
-.stat-card strong{display:block;color:#2563eb;font-size:22px;margin-bottom:4px}
-.stat-card span{display:block;color:#64748b;font-size:12px;font-weight:600}
-.section{margin-bottom:25px}
-.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
-.section-header h2{font-size:19px;color:#172033}
-.section-header a{font-size:12px;font-weight:700;color:#2563eb;text-decoration:none}
-.note-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:10px;box-shadow:0 5px 18px rgba(15,23,42,.06)}
-.note-icon{width:46px;height:46px;min-width:46px;border-radius:13px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:21px}
-.note-info{min-width:0;flex:1}
-.note-info h3{font-size:15px;color:#172033;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.note-info p{font-size:12px;color:#64748b;margin-bottom:3px}
-.note-info small{font-size:11px;color:#94a3b8;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.arrow{font-size:25px;color:#94a3b8}
-.service-icon{width:50px;height:50px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:11px;background:#eff6ff}
-.service-icon.sunday{background:#eff6ff}
-.service-icon.prayer{background:#fef3c7}
-.service-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:15px;box-shadow:0 5px 18px rgba(15,23,42,.07)}
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:70px;background:#fff;border-top:1px solid #e5e7eb;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;z-index:1000;box-shadow:0 -5px 18px rgba(15,23,42,.08)}
-.nav-item{text-decoration:none;color:#94a3b8;text-align:center;font-size:11px;font-weight:600}
-.nav-item span{display:block;font-size:22px;line-height:25px;margin-bottom:2px}
-.nav-item small{font-size:11px}
-.nav-item.active,.nav-item:hover{color:#2563eb}
-@media(max-width:430px){.mobile-app{box-shadow:none}.home-content{padding-left:14px;padding-right:14px}}
-</style>
-
 </head>
 
 
@@ -1188,7 +1539,7 @@ body{background:#e9edf2;color:#172033}
      APP JAVASCRIPT
 ========================================== -->
 
-
+<script src="js/app.js"></script>
 
 <script>
 /*
