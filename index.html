@@ -11,7 +11,205 @@
 
     <title>ChurchNotes</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <!--
+        STANDALONE INDEX PAGE
+        No external css/style.css is required.
+        This makes the splash screen work directly on GitHub Pages.
+    -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef3f9;
+            color: #1d2939;
+        }
+
+        .splash-page {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .splash-container {
+            width: 100%;
+            max-width: 430px;
+            min-height: 100vh;
+            min-height: 100dvh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 40px 24px;
+            background: #f7f9fc;
+        }
+
+        .splash-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .book-icon {
+            width: 92px;
+            height: 92px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 25px;
+
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #3b82f6,
+                #60a5fa
+            );
+
+            color: #ffffff;
+
+            box-shadow:
+                0 14px 30px rgba(37, 99, 235, 0.25);
+
+            position: relative;
+        }
+
+        .book-icon::before,
+        .book-icon::after {
+            content: "";
+            position: absolute;
+            top: 21px;
+            bottom: 21px;
+            width: 25px;
+
+            border: 3px solid rgba(255, 255, 255, 0.95);
+        }
+
+        .book-icon::before {
+            left: 20px;
+            border-right: none;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .book-icon::after {
+            right: 20px;
+            border-left: none;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .book-icon span {
+            position: relative;
+            z-index: 2;
+
+            font-size: 25px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .splash-container h1 {
+            color: #172033;
+            font-size: 31px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 9px;
+        }
+
+        .splash-subtitle {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+            max-width: 290px;
+            margin-bottom: 42px;
+        }
+
+        .loading-area {
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 7px;
+
+            overflow: hidden;
+            border-radius: 20px;
+
+            background: #dbe5f1;
+        }
+
+        .loading-progress {
+            height: 100%;
+            width: 0%;
+
+            border-radius: inherit;
+
+            background: linear-gradient(
+                90deg,
+                #2563eb,
+                #3b82f6,
+                #60a5fa
+            );
+
+            animation: loadingProgress 3s linear forwards;
+        }
+
+        .loading-text {
+            margin-top: 12px;
+
+            color: #94a3b8;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        @keyframes loadingProgress {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 431px) {
+            .splash-container {
+                min-height: 100vh;
+                border-radius: 24px;
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+            }
+
+            .splash-page {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .splash-container {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body class="splash-page">
@@ -47,9 +245,7 @@
 
     </div>
 
-
     <script>
-
         // Loading screen duration
         setTimeout(function () {
 
@@ -57,7 +253,6 @@
             window.location.href = "home.html";
 
         }, 3000);
-
     </script>
 
 </body>
